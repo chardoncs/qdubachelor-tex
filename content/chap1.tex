@@ -6,7 +6,7 @@
 
 引用文献\cite{刘海洋2013LATEX}。
 
-插入图片，如图\ref{fig:sample_figure}所示。
+插入图片，如图\ref{fig:sample_figure} 所示。
 \begin{figure*}[htb]
 \centering
 \includegraphics[width=0.5\textwidth]{figures/logo.png}
@@ -14,22 +14,56 @@
 \label{fig:sample_figure}
 \end{figure*}
 
-插入表格，如表\ref{tab:sample_table}所示。
+插入表格，如\cref{tab:sample_table} 所示。
 \begin{table}[htb]
 \centering
 \caption{表格样例}
 \label{tab:sample_table}
 \begin{tabular}{lcccc}
-\hline
+\toprule
 ~~&列1&列2&列3\\
-\hline
+\midrule
 行1 & (1,1) & (1,2) & (1,3)\\
 行2 & (2,1) & (2,2) & (2,3)\\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
 公式样例：
 \begin{equation}
-sin^2x+cos^2x=1
+\sin^2x+\cos^2x=1
 \end{equation}
+
+列表样例：
+\begin{itemize}
+    \item 项目1
+    \item 项目2
+    \item 项目3
+\end{itemize}
+
+有序列表：
+\begin{enumerate}
+    \item 项目1
+    \item 项目2
+    \item 项目3
+\end{enumerate}
+
+algorithm2e 样例
+
+\begin{algorithm}[htb]
+\caption{如何写论文}
+\label{alg:symbol-lookup}
+\KwInput{论文题目~参考文件}
+\KwOutput{论文}
+
+\While{$\lnot$ 写完了}{
+    \If{有参考文件}{
+        参考文件\; \tcp{这是注释}
+    }
+    根据 论文题目 写论文 \tcp*{这是注释}
+    
+}
+\Return \texttt{error}; 
+\end{algorithm}
+
+\FloatBarrier

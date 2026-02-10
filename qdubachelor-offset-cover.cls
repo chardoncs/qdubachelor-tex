@@ -52,7 +52,25 @@
 \setCJKfamilyfont{xbsong}{FZXiaoBiaoSong-B05S}
 \newcommand{\xbsong}{\CJKfamily{xbsong}}
 
+% === 字体设置 ===
+\RequirePackage{xeCJK}
+\RequirePackage{fontspec}
+\newfontfamily\circlefont{FangSong} % 圆圈数字字体
+\setmainfont{Times New Roman} % 正文字体设置为Times New Roman
+
+% 仿宋没有提供粗体采用伪粗体修复
+\let\fangsong\relax
+\newCJKfontfamily{\fangsong}{FangSong}[AutoFakeBold=3]
+
+\let\heiti\relax
+\newCJKfontfamily{\heiti}{SimHei}[
+%   BoldFont={Heiti SC Medium}, % 黑体-简中等字重，只有MacOS系统提供
+  % BoldFont={SimHei}, % 黑体粗体
+  AutoFakeBold=2, % 伪粗体
+] % 黑体粗体，只是为了消除编译器warning，实际用的是medium字重
+
 %parameter
+\newtoks\category %论文类别
 \newtoks\title %论文标题
 \newtoks\titleEn %论文英文标题
 \newtoks\school %学院
@@ -60,6 +78,7 @@
 \newtoks\name %姓名
 \newtoks\supervisor %指导教师
 \newtoks\date %封面日期
+\newtoks\studentid %学号
 
 %------------------------ cover ------------------------
 \def\maketitle {
@@ -69,21 +88,23 @@
     \vspace*{40pt}
     \centerline{\includegraphics[height=3.85cm,width=11cm]{figures/logo} }
     \vspace{52pt}
-    \centerline{\xbsong \zihao{-0}{本科毕业论文(设计)}}
+    \centerline{\xbsong \zihao{-0}{\the\category}}
     \vspace{180pt}
     \centerline {
-        \begin{tabular}{ b{2.5cm} >{\centering\arraybackslash}b{8cm}}
-            \fangsong \zihao{-3} \ziju{2} \textbf{题目：} & {\heiti \zihao{-3} \the\title} \\[-2pt]
-            \Xcline{2-2}{1pt} \\[0.1cm]
-            \fangsong \zihao{-3} \ziju{2} \textbf{学院：} & {\heiti \zihao{-3} \the\school} \\[-2pt]
-            \Xcline{2-2}{1pt} \\[0.1cm]
-            \fangsong \zihao{-3} \ziju{2} \textbf{专业：} & {\heiti \zihao{-3} \the\major} \\[-2pt]
-            \Xcline{2-2}{1pt} \\[0.1cm]
-            \fangsong \zihao{-3} \ziju{2} \textbf{姓名：} & {\heiti \zihao{-3} \the\name} \\[-2pt]
-            \Xcline{2-2}{1pt} \\[0.1cm]
-            \fangsong \zihao{-3} \textbf{指导教师：} & {\heiti \zihao{-3} \the\supervisor} \\[-2pt]
-            \Xcline{2-2}{1pt} \\[0.1cm]
-        \end{tabular}
+      \begin{tabular}{ b{2.5cm} >{\raggedright\arraybackslash}b{8cm}}
+        \fangsong \zihao{-3} \ziju{2} \textbf{题目：} & {\heiti \zihao{-3} \the\title} \\[-2pt]
+        \Xcline{2-2}{1.2pt} \\[0.1cm]
+        \fangsong \zihao{-3} \ziju{2} \textbf{学院：} & {\heiti \zihao{-3} \the\school} \\[-2pt]
+        \Xcline{2-2}{1.2pt} \\[0.1cm]
+        \fangsong \zihao{-3} \ziju{2} \textbf{专业：} & {\heiti \zihao{-3} \the\major} \\[-2pt]
+        \Xcline{2-2}{1.2pt} \\[0.1cm]
+        \fangsong \zihao{-3} \ziju{2} \textbf{姓名：} & {\heiti \zihao{-3} \the\name} \\[-2pt]
+        \Xcline{2-2}{1.2pt} \\[0.1cm]
+        \fangsong \zihao{-3} \ziju{2} \textbf{学号：} & {\heiti \zihao{-3} \the\studentid} \\[-2pt]
+        \Xcline{2-2}{1.2pt} \\[0.1cm]
+        \fangsong \zihao{-3} \textbf{指导教师：} & {\heiti \zihao{-3} \the\supervisor} \\[-2pt]
+        \Xcline{2-2}{1.2pt} \\[0.1cm]
+      \end{tabular}
     }
     \vskip 1\baselineskip
     \centerline{\fangsong \zihao{4} \textbf{\the\date}}

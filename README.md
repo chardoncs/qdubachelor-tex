@@ -11,6 +11,12 @@
 
 手动编译时需要执行四次编译，即`xelatex | bibtex | xelatex x2`，以生成带有完整目录和参考文献信息的PDF文档。
 
+或者直接使用`latexmk`命令编译。
+
+```bash
+latexmk main.tex
+```
+
 LaTeX发行版：推荐使用最新版TeX Live。
 
 ## 使用方法
@@ -19,11 +25,13 @@ LaTeX发行版：推荐使用最新版TeX Live。
 
 使用LaTeX IDE（例如TeXstudio、Texmaker等）打开主文件。
 
-论文主文件为\`main.tex'，参考文献主文件为\`mainref.bib'。
+推荐使用VSCode + LaTeX Workshop插件，或使用 [Overleaf](https://www.overleaf.com/) 在线编辑。
+
+论文主文件为`main.tex`，参考文献主文件为`mainref.bib`。
 
 #### 胶印封面
 
-为了满足胶印本封面打印需求，从v1.2.0开始加入胶印封面模板，其主文件为\`offset-cover.tex'。胶印本封面主文件和论文主文件共享\`content/cover.tex'，因此通常无需修改\`offset-cover.tex'。
+为了满足胶印本封面打印需求，从v1.2.0开始加入胶印封面模板，其主文件为 `offset-cover.tex`。胶印本封面主文件和论文主文件共享 `content/cover.tex`，因此通常无需修改 `offset-cover.tex`。
 
 打印胶印封面时，请选择纸张为横向A3，该打印方式适用于 460mm x 297mm (18.110 inches x 11.693 inches) 的封面纸。
 
@@ -34,6 +42,23 @@ LaTeX发行版：推荐使用最新版TeX Live。
 [点此了解详情](./.github/commandline.md)，如果您主要使用的是LaTeX IDE，可忽略此说明。
 
 ## 注意事项
+
+### 字体准备
+
+要成功编译此模版，安装以下字体：
+#### 中文字体
+- FangSong.ttf 仿宋
+- FZXiaoBiaoSong.ttf 或 FZXiaoBiaoSong-B05S.ttf 方正小标宋
+- Kaiti.ttf 楷体
+- SimSun.ttf 宋体
+- SimHei.ttf 黑体
+
+#### 等宽字体
+- Courier New
+- Fira Code（可选，如果在.cls中使用）
+
+请注意：不要不小心使用搜索引擎搜索下载字体并误安装，这可能会导致您下载到盗版字体。尊重设计师的劳动成果和版权，使用正版字体。
+
 
 ### 方正小标宋
 
@@ -56,3 +81,5 @@ logo使用Krita设计，源文件为`qdu-logo.kra'。如需编辑图片，可以
 之前的logo图片位于\`figures/logo.old.png'，如需使用请用\`logo.old.png'替换\`logo.png'。
 
 > Maintained by [Charles Dong](https://github.com/chardoncs) with Arch Linux and ❤️
+
+> Contributed by [null](https://github.com/nullnan) with 💙.

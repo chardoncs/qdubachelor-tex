@@ -10,15 +10,16 @@ OFFSET_COVER = offset-cover
 
 REPO_URL = https://github.com/chardoncs/$(REPO_NAME).git
 
+LATEXMK = latexmk
+
 build:
-	xelatex $(MAIN_TEX).tex
-	bibtex $(MAIN_BIB)
-	xelatex $(MAIN_TEX).tex
-	xelatex $(MAIN_TEX).tex
+	$(LATEXMK) $(MAIN_TEX).tex
+	@cp $(MAIN_TEX).pdf $(shell cat $(MAIN_TEX).outname).pdf
 	@echo 'Done'
 
 clean: cleanpdf
-	@rm -f ./*.aux ./*.bbl ./*.blg ./*.log ./*.out ./*.toc
+	$(LATEXMK) -C
+	@rm -f content/*.aux
 	@echo 'Temporary files cleaned'
 
 cleanpdf:
@@ -31,7 +32,7 @@ viewpdf:
 build-preview: build viewpdf
 
 offset-cover:
-	xelatex $(OFFSET_COVER).tex
+	$(LATEXMK) $(OFFSET_COVER).tex
 	@echo 'Done'
 
 upgrade: clean
@@ -40,7 +41,6 @@ upgrade: clean
 
 	@mv -vf ./$(REPO_NAME)/qdubachelor.cls ./
 	@mv -vf ./$(REPO_NAME)/qdubachelor-offset-cover.cls ./
-	@mv -vf ./$(REPO_NAME)/bstutf8.bst ./
 	@mv -vf ./$(REPO_NAME)/qdu-logo.kra ./
 	@cp -vrf ./$(REPO_NAME)/.github ./
 	@cp -vrf ./$(REPO_NAME)/figures ./
