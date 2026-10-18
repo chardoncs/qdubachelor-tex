@@ -31,6 +31,7 @@
 *-blx.aux
 *-blx.bib
 *.run.xml
+*.bbl-SAVE-ERROR
 
 ## Build tool auxiliary files:
 *.fdb_latexmk
@@ -304,3 +305,10 @@ TSWLatexianTemp*
 *.kra~
 *.png~
 *.jpg~
+
+# MacOS
+.DS_Store
+_MACOSX
+
+# Custom auxiliary files
+*.outname

@@ -1,23 +1,28 @@
 % !TEX encoding = UTF-8
-% !TEX program = txs:///xelatex | txs:///bibtex | txs:///xelatex | txs:///xelatex
-% !BIB program = bibtex
+% !TEX program = txs:///xelatex | txs:///biber | txs:///xelatex | txs:///xelatex
 % !TeX root = main.tex
 
+% 打印版使用 forprint 选项
+% 电子版可去掉 forprint 选项
 \documentclass[forprint]{qdubachelor}
+\setmeta
+% \usepackage{showframe} % 可用于 Debug
+\addbibresource[location=local]{mainref.bib} % BibTeX文件 可以按照需要引入默认为mainref.bib
 \begin{document}
 \frontmatter
-\include{content/cover}
-\declaration
+\maketitle
+\declaration{2025年5月9日}{figures/signature.png} % 带签名的版本
+% \declaration{2025年5月9日}{}
 \include{content/abstr}
 \emptystyles
 \setcounter{page}{1}
-\tableofcontents
+\maketoc
 
 \mainmatter
 \restorestyles
 \include{content/chap1}
 \include{content/chap2}
-\include{content/thanks}
 \reference{mainref}
+\include{content/thanks}
 \include{content/appdx}
 \end{document}
