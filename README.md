@@ -80,6 +80,4 @@ logo使用Krita设计，源文件为`qdu-logo.kra'。如需编辑图片，可以
 
 之前的logo图片位于\`figures/logo.old.png'，如需使用请用\`logo.old.png'替换\`logo.png'。
 
-> Maintained by [Charles Dong](https://github.com/chardoncs) with Arch Linux and ❤️
-
 > Contributed by [null](https://github.com/nullnan) with 💙.
